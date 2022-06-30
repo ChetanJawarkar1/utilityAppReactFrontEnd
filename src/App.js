@@ -8,6 +8,8 @@ import About from './components/About';
 import Read from './components/Read';
 import Update from './components/Update';
 import LoginPage from './components/LoginPage';
+import Login from './components/Login';
+import LoginContainer from './components/LoginContainer';
 import './index.css';
 
 
@@ -23,6 +25,8 @@ function App(){
           <Route path="/" element={<DemoHome/>}/>
 
           <Route path="/login" element={<LoginPage/>}/>
+
+          <Route path="/login1" element={<Login/>}/>
           
           <Route path="/create" element={<Create/>}/>
         
@@ -31,7 +35,8 @@ function App(){
           <Route path="/read" element={<Read/>}/>
 
           <Route path="/update" element={<Update/>}/>
-          
+
+                    
           </Routes>
         </div>
       </div>

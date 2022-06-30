@@ -20,7 +20,7 @@ function DemoHome () {
 
   let navigate = useNavigate();
   const sinin = () =>{
-    navigate('/login');
+    navigate('/login1');
   }
  
   const sinup = () =>{

@@ -16,35 +16,44 @@ const setData = (data) => {
  }
 
 
-
-
-
 function Read() {
     
-    alert("From read"+localStorage.getItem("tokn"));
+
+    //alert("From read"+localStorage.getItem("user"));
 
     const [APIData, setAPIData] = useState([]);
-    useEffect(() => {
-        userServices.getUsers()
-            .then((response) => {
-                setAPIData(response.data);
-            })
-    }, [])
+    // useEffect(() => {
+    //     userServices.getUsers()
+    //         .then((response) => {
+    //             alert("data wapas agya"+response.data);
+    //             setAPIData(response.data);
+    //         })
+    // }, [])
 
+    useEffect(() => {
+      //alert("calling from Read ko aya");
+       userServices.getUsers1()
+            .then((response) => {
+               
+                setAPIData(response.data);
+             })
+            
+     }, [])
+    // alert("data wapas agya"+APIData.data);  
+    
     const getData = () => {
-        userServices.getUsers()
+        userServices.getUsers1()
             .then((getData) => {
               setAPIData(getData.data);
              })
     }
-    
+ 
 
-    const deleteUser = (id) => {
-        userServices.deleteUser(id).then(() => {
+     const deleteUser = (id) => {
+         userServices.deleteUser(id).then(() => {
             getData();
-        })
-       
-            
+         })
+        
     }
     let navigate = useNavigate();
     const createUser = () =>{

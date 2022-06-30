@@ -15,7 +15,7 @@
 }
 
 .App-header {
-  background-color: mediumspringgreen;
+  background-color: gray;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@
   justify-content: top;
   align-items: center;
   height: 100vh;
-  color: #61dafb;
+  color: gray;
   
 }
 .main-header{

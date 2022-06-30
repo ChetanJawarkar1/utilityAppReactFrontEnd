@@ -1,44 +1,86 @@
 import React,{useRef, useState, useEffect, form} from 'react';
-import userServices from '../services/userServices';
 import axios from "axios";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { render } from '@testing-library/react';
  
-const LoginPage = () =>{
+function LoginPage (){
 
+
+   
+    const navigate = useNavigate();
   const[username, setEmail] = useState("");
   const[password, setPassword] = useState("");
   const[token, setToken] = useState("");
+ // const { setAuth } = useAuth();
 
+  
 
-  const[allentry, setAllEntry] = useState([]);
+  
+  //const[allentry, setAllEntry] = useState([]);
   const LOGIN_URL = "http://localhost:8080/authenticate"
-  const LOGIN = "http://localhost:8080/hello"
+ // const LOGIN = "http://localhost:8080/hello"
+
+
+     
+    //  useEffect(() => {
+    //      setErrMsg('');
+    //  }, [username, password])
+ 
 
 
 
+  
+  //const location = useLocation();
+  //const from = location.state?.from?.pathname || "/read";
+
+  //const userRef = useRef();
+  //const errRef = useRef();
+ // const [errMsg, setErrMsg] = useState('');
 
 
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "http://localhost:8080/authenticate";
+// const handleSubmit = async (e) => {
+//     e.preventDefault();
 
-  const userRef = useRef();
-  const errRef = useRef();
+//     try {
+//         const response = await axios.post(LOGIN_URL,
+//             JSON.stringify({ username, password }),
+//             {
+//                 headers: { 'Content-Type': 'application/json' },
+//                 //withCredentials: true
+//             }
+//         );
+//         console.log(JSON.stringify(response?.data));
+//         //console.log(JSON.stringify(response));
+//         const accessToken = response?.data?.accessToken;
+//         const roles = response?.data?.roles;
+//         setAuth({ username, password, roles, accessToken });
+//         setEmail('');
+//         setPassword('');
+//         navigate(from, { replace: true });
+//     } catch (err) {
+//         if (!err?.response) {
+//             setErrMsg('No Server Response');
+//         } else if (err.response?.status === 400) {
+//             setErrMsg('Missing Username or Password');
+//         } else if (err.response?.status === 401) {
+//             setErrMsg('Unauthorized');
+//         } else {
+//             setErrMsg('Login Failed');
+//         }
+        
+//     }
+// }
 
-  const [errMsg, setErrMsg] = useState('');
+const readPage = () =>{
+    navigate('/read');
+}
 
-
-  //function loginPass(email,password){
-  //  const [allentry, setAllEntry] = useState([]);
-   //  useEffect(() => {userServices.login(email,password).then((response) =>{
-   //    alert(response.data);
-   /////  }
-    // )
-   // },
-
-  //[])
- // }
+let navigate1 = useNavigate();
+    const createUser = () =>{
+         navigate('/create');
+    }
+    
 
   const handleSubmit = async (e) => {
    // e.preventDefault();
@@ -61,46 +103,40 @@ const LoginPage = () =>{
                  alert("hi upar"+JSON.stringify(op));
                 window.localStorage.setItem('tokn', JSON.stringify(op));
 
-             if(JSON.stringify(op)!= ""){
+            // if(JSON.stringify(op)!= ""){
 
-                navigate.push('/read');
+                //navigate(from, { replace: true });
+                readPage();
             
-            }
+          //  }
 
                  
 } catch (err) {
       
    // } catch (err) {
-        if (!err?.response) {
-            setErrMsg('No Server Response');
-        } else if (err.response?.status === 400) {
-            setErrMsg('Missing Username or Password');
-        } else if (err.response?.status === 401) {
-            setErrMsg('Unauthorized');
-        } else {
-            setErrMsg('Login Failed');
-        }
-        errRef.current.focus();
-    }
+    //     if (!err?.response) {
+    //         setErrMsg('No Server Response');
+    //     } else if (err.response?.status === 400) {
+    //         setErrMsg('Missing Username or Password');
+    //     } else if (err.response?.status === 401) {
+    //         setErrMsg('Unauthorized');
+    //     } else {
+    //         setErrMsg('Login Failed');
+    //     }
+    //     errRef.current.focus();
+     }
 
    
 }
-
-
-
-
-
-
-
 
 
   
 
 return(
     <section>
-    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+   
 <>
- <form  onSubmit={handleSubmit}>
+ <form>
    <div>
       <label htmlFor='email'>Email</label>
       <input type='text' name="email" id = "email"
@@ -117,7 +153,7 @@ return(
       />
    </div>
 
-<button type='submit'>Login</button>
+<button type='submit' onClick={() => handleSubmit()}>Login</button>
 </form>
   
 </>
@@ -126,6 +162,7 @@ return(
 
 
 }
+
 
  
 
