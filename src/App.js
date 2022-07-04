@@ -9,7 +9,8 @@ import Read from './components/Read';
 import Update from './components/Update';
 import LoginPage from './components/LoginPage';
 import Login from './components/Login';
-import LoginContainer from './components/LoginContainer';
+import CreateTest from './components/CreateTest';
+import UpdateTest from './components/UpdateTest';
 import './index.css';
 
 
@@ -29,12 +30,16 @@ function App(){
           <Route path="/login1" element={<Login/>}/>
           
           <Route path="/create" element={<Create/>}/>
+
+          <Route path="/createtest" element={<CreateTest/>}/>
         
           <Route path="/about" element={<About/>}/>
 
           <Route path="/read" element={<Read/>}/>
 
           <Route path="/update" element={<Update/>}/>
+
+          <Route path="/updatetest" element={<UpdateTest/>}/>
 
                     
           </Routes>

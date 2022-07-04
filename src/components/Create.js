@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [checkbox, setCheckbox] = useState(false);
+    const [photos, setPhotos] = useState('');
 
     let navigate = useNavigate();
     

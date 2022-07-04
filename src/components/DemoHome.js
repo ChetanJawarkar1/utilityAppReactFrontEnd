@@ -24,7 +24,7 @@ function DemoHome () {
   }
  
   const sinup = () =>{
-    navigate('/create');
+    navigate('/createtest');
   }
 
   return (

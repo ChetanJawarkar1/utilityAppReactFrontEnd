@@ -5,8 +5,10 @@ import authHeader from "../services/auth-header";
 
 
 
+
 const USER_RESTAPI_URL = 'http://localhost:8080/users'
 const USER_RESTAPI_POST_URL = 'http://localhost:8080/postusers'
+const USER_RESTAPI_POST_URL_TEST = 'http://localhost:8080/test'
 const USER_RESTAPI_URL_DELETEUSER = 'http://localhost:8080/DeleteUser/'
 const USER_API_BASE_URL = 'http://localhost:8080/getUserById/'
 const USER_UPDATE_URL = 'http://localhost:8080/updateUser'
@@ -53,12 +55,21 @@ class UserService{
    
 
     
-    postUsers(req){
+    postUsers_old(req){
         console.log("req",req)
         axios.post(USER_RESTAPI_POST_URL,req, { headers: authHeader() }).then(response=>{
             return response.data
         })
     }
+
+    postUsers(req){
+        console.log("req",req)
+        axios.post(USER_RESTAPI_POST_URL_TEST,req, { headers: authHeader() }).then(response=>{
+            return response.data
+        })
+    }
+
+
 }
 
 export default new UserService();
