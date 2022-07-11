@@ -3,7 +3,7 @@ import { Button, Checkbox, Form,Link,Table } from 'semantic-ui-react'
 import userServices from '../services/userServices';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-const USER_UPDATE_URL = 'http://localhost:8080/updateUser'
+const USER_UPDATE_URL = 'http://localhost:8080/updateUserWithToken'
 
 
 
@@ -16,6 +16,7 @@ export default function UpdateTest() {
     const [checkbox, setCheckbox] = useState(false);
 
     let navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
 
 
     const updateAPIData = (e) => {
@@ -31,7 +32,7 @@ export default function UpdateTest() {
        method: 'put',
        url: USER_UPDATE_URL,
        data: formData,
-       headers: {'Content-Type': 'multipart/form-data' }
+       headers: {'Content-Type': 'multipart/form-data', Authorization: 'Bearer '+JSON.stringify(user)  }
     })
     .then(function (response) {
        //handle success

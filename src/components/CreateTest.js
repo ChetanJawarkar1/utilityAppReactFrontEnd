@@ -3,8 +3,9 @@ import { Button, Checkbox, Form } from 'semantic-ui-react'
 import userServices from '../services/userServices';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import authHeader from "../services/auth-header";
 
-const USER_RESTAPI_POST_URL_TEST = 'http://localhost:8080/test'
+const USER_RESTAPI_POST_URL_WITH_TOKEN = 'http://localhost:8080/insertUserWithToken'
 
 
 
@@ -16,23 +17,10 @@ const USER_RESTAPI_POST_URL_TEST = 'http://localhost:8080/test'
     const [imagefile, setImageFile] = useState('');
 
     let navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
     
      const postData = (e) => {
-        
-     
-    //     if(!email.includes('@')){
-    //         alert("Please add @ symbole");
-    //     }else if(!email.includes('.com')){
-    //         alert(".com is missing please enter it");
-    //     }
-    //     else{
-    //     userServices.postUsers({firstName,lastName,email,imagefile})
-    //     navigate('/read');
-    //     alert("sucess");
-    // }
-
-
-
+    
 
    // onFileChangeHandler = (e) => {
         e.preventDefault();
@@ -44,9 +32,9 @@ const USER_RESTAPI_POST_URL_TEST = 'http://localhost:8080/test'
         //Append the rest data then send
         axios({
            method: 'post',
-           url: USER_RESTAPI_POST_URL_TEST,
+           url: USER_RESTAPI_POST_URL_WITH_TOKEN,
            data: formData,
-           headers: {'Content-Type': 'multipart/form-data' }
+           headers: {'Content-Type': 'multipart/form-data', Authorization: 'Bearer '+JSON.stringify(user)  }
         })
         .then(function (response) {
            //handle success

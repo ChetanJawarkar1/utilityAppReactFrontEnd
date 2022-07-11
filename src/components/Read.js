@@ -21,11 +21,14 @@ const setData = (data) => {
 
 function Read() {
    
-
+    const [errors, setErrors] = useState([]);
     const [APIData, setAPIData] = useState([]);
+
+    
    
     useEffect(() => {
       //alert("calling from Read ko aya");
+      setErrors('kay ko a rhe tum');
        userServices.getUsers1()
             .then((response) => {
                //alert(JSON.stringify(response.data));
@@ -58,10 +61,10 @@ function Read() {
       }
 
      // window.URL.createObjectURL(data.imagefile)
+    
 
     return (
-      
-
+             
         <div>
             <Table singleLine>
                 <Table.Header>
