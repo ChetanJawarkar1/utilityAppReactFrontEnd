@@ -3,7 +3,8 @@ import { Button, Checkbox, Form,Link,Table } from 'semantic-ui-react'
 import userServices from '../services/userServices';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-const USER_UPDATE_URL = 'http://localhost:8080/updateUserWithToken'
+import { properties } from '../properties';
+//const USER_UPDATE_URL = 'http://localhost:8080/updateUserWithToken'
 
 
 
@@ -30,7 +31,7 @@ export default function UpdateTest() {
     //Append the rest data then send
     axios({
        method: 'put',
-       url: USER_UPDATE_URL,
+       url: properties.USER_UPDATE_URL_WITHTOKEN,
        data: formData,
        headers: {'Content-Type': 'multipart/form-data', Authorization: 'Bearer '+JSON.stringify(user)  }
     })

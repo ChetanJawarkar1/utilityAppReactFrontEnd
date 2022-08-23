@@ -4,9 +4,12 @@ import userServices from '../services/userServices';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import authHeader from "../services/auth-header";
+import { properties } from '../properties';
 
-const USER_RESTAPI_POST_URL_WITH_TOKEN = 'http://localhost:8080/insertUserWithToken'
 
+
+//const USER_RESTAPI_POST_URL_WITH_TOKEN = 'http://localhost:8080/insertUserWithToken'
+const USER_RESTAPI_POST_URL_WITH_TOKEN = properties.insertUserData
 
 
  function CreateTest() {
@@ -39,6 +42,7 @@ const USER_RESTAPI_POST_URL_WITH_TOKEN = 'http://localhost:8080/insertUserWithTo
         .then(function (response) {
            //handle success
            console.log(response);
+           alert("SUCCESFULLY REGISTERED");
         }, 
         function(error) { 
            // handle error 

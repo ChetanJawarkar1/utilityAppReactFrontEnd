@@ -1,6 +1,7 @@
 import axios from "axios";
+import { properties } from '../properties';
 
-const API_URL = "http://localhost:8080";
+//const API_URL = "http://localhost:8080";
 
 // const signup = (username, password) => {
 //   return axios
@@ -19,7 +20,7 @@ const API_URL = "http://localhost:8080";
 
 const login = (username, password) => {
   return axios
-    .post(API_URL + "/authenticate", {
+    .post(properties.LOGIN_URL, {
       username,
       password,
     })
