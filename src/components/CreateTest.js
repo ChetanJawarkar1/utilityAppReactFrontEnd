@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import authHeader from "../services/auth-header";
 import { properties } from '../properties';
+import Spinner from '../Spinner';
 
 
 
@@ -18,6 +19,8 @@ const USER_RESTAPI_POST_URL_WITH_TOKEN = properties.insertUserData
     const [email, setEmail] = useState('');
     const [checkbox, setCheckbox] = useState(false);
     const [imagefile, setImageFile] = useState('');
+    const [loading, setIsLoading] = useState(false);
+    
 
     let navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("user"));
@@ -28,6 +31,7 @@ const USER_RESTAPI_POST_URL_WITH_TOKEN = properties.insertUserData
    // onFileChangeHandler = (e) => {
         e.preventDefault();
         const formData = new FormData();
+        setIsLoading(true);
         formData.append('firstName',firstName );
         formData.append('lastName', lastName);
         formData.append('email', email);
@@ -41,6 +45,7 @@ const USER_RESTAPI_POST_URL_WITH_TOKEN = properties.insertUserData
         })
         .then(function (response) {
            //handle success
+           setIsLoading(false);
            console.log(response);
            alert("SUCCESFULLY REGISTERED");
         }, 
@@ -52,9 +57,15 @@ const USER_RESTAPI_POST_URL_WITH_TOKEN = properties.insertUserData
  //  }
         
      }
+     let listContent;
+     if(loading) {
+        listContent = <div className="list"><Spinner/></div>;
+      }
 
-    const backPage = () =>{
+    const seeAllUsers = () =>{
+        setIsLoading(true);
         navigate('/read');
+        setIsLoading(false);
    }
 
    
@@ -88,9 +99,9 @@ const USER_RESTAPI_POST_URL_WITH_TOKEN = properties.insertUserData
             <Checkbox label='I agree to the Terms and Conditions' onChange={(e) => setCheckbox(!checkbox)} />
         </Form.Field>
         <Button onClick={postData} type='submit'>Submit</Button>
-        <Button  onClick={() => backPage()} >SEE ALL USERS</Button>
+        <Button  onClick={() => seeAllUsers()} >SEE ALL USERS</Button>
         <Button  onClick={() => backhome()} >Home</Button>
-    </Form></div>
+    </Form> { listContent }</div>
 //)
     )}
 export default CreateTest;

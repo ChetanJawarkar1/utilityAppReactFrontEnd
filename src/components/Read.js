@@ -4,7 +4,8 @@ import userServices from '../services/userServices';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
-import App from '../App';
+import Spinner from '../Spinner';
+
 
 
 const setData = (data) => {
@@ -23,17 +24,25 @@ function Read() {
    
     const [errors, setErrors] = useState([]);
     const [APIData, setAPIData] = useState([]);
+    const [loading, setIsLoading] = useState(true);
 
+    if(loading) {
+        listContent = <div className="list"><Spinner/></div>;
+      }
+    
     
    
     useEffect(() => {
       //alert("calling from Read ko aya");
-      setErrors('kay ko a rhe tum');
+     // setErrors('kay ko a rhe tum');
+     setIsLoading(true);
        userServices.getUsers1()
             .then((response) => {
                //alert(JSON.stringify(response.data));
                 setAPIData(response.data);
+                setIsLoading(false);   
              })
+    
             
      }, [])
     // alert("data wapas agya"+APIData.data);  
@@ -42,13 +51,16 @@ function Read() {
         userServices.getUsers1()
             .then((getData) => {
               setAPIData(getData.data);
+              setIsLoading(false); 
              })
     }
  
 
      const deleteUser = (id) => {
+        setIsLoading(true);  
          userServices.deleteUser(id).then(() => {
             getData();
+            
          })
         
     }
@@ -61,10 +73,15 @@ function Read() {
       }
 
      // window.URL.createObjectURL(data.imagefile)
+     let listContent;
+    
     
 
     return (
-             
+
+  
+
+           
         <div>
             <Table singleLine>
                 <Table.Header>
@@ -97,7 +114,9 @@ function Read() {
                 </Table.Body>
                 <Button  onClick={() => createUser()} >Add New User</Button>
                 <Button  onClick={() => backhome()} >HOME</Button>
+                
             </Table>
+            { listContent }
         </div>
     )
 }

@@ -1,12 +1,12 @@
 export const properties = {
   //  insertUserData: "http://localhost:8080/insertUserWithToken",
-   // for auth service
+  //  //for auth service
   //  LOGIN_URL :"http://localhost:8080/authenticate",
-   // USER_RESTAPI_URL : 'http://localhost:8080/users',
+  //  USER_RESTAPI_URL : 'http://localhost:8080/users',
   //  USER_RESTAPI_URL_DELETEUSER : 'http://localhost:8080/DeleteUser/',
-   // USER_UPDATE_URL : 'http://localhost:8080/updateUser',
- //   USER_RESTAPI_POST_URL : 'http://localhost:8080/postusers',
-   // USER_RESTAPI_POST_URL_TEST : 'http://localhost:8080/test',
+  //  USER_UPDATE_URL : 'http://localhost:8080/updateUser',
+  //  USER_RESTAPI_POST_URL : 'http://localhost:8080/postusers',
+  //  USER_RESTAPI_POST_URL_TEST : 'http://localhost:8080/test',
   //  USER_UPDATE_URL_WITHTOKEN : 'http://localhost:8080/updateUserWithToken'
 
 
