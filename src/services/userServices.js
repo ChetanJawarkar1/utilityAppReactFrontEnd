@@ -21,6 +21,52 @@ const user = JSON.parse(localStorage.getItem("user"));
 class UserService{
 
    
+// downloadZipFile1(filename){
+
+//     fetch("url",
+//     { 
+//         method: "GET",
+//         headers: { "Content-Type": "application/json",'Authorization': 'Bearer ' + window.localStorage["Access_Token"]},
+//         body:data
+//     }).then(response => response.blob()).then(response => ...*your code for download*... )
+
+
+// }
+
+    downloadZipFile(filename) {
+        console.log("REQUEST URL FOR DOWNLOAD FILE"+properties.DOWNLOAD_FILE_API + filename);
+        let response;
+        try{
+      //  response = axios.get(properties.DOWNLOAD_FILE_API + filename);
+
+        response = axios.get(properties.DOWNLOAD_FILE_API + filename, { responseType: 'blob',timeout: 30000,});
+
+        }catch(e){
+            console.log("=============EXCEPTION IN DOWNLOAD API==============")
+            throw("Exceprion",e);
+        }
+        return response;
+    }
+
+
+    downloadZipFileThirdParty(filename) {
+        console.log("REQUEST URL FOR DOWNLOAD FILE"+properties.DOWNLOAD_FILE_THIRDPARTY_API + filename);
+        let response;
+        try{
+      //  response = axios.get(properties.DOWNLOAD_FILE_API + filename);
+
+        response = axios.get(properties.DOWNLOAD_FILE_THIRDPARTY_API + filename, { responseType: 'blob',timeout: 30000,});
+
+        }catch(e){
+            console.log("=============EXCEPTION IN DOWNLOAD API==============")
+            throw("Exceprion",e);
+        }
+        return response;
+    }
+
+    getDropDownData(){
+        return axios.get("http://localhost:8080/fetchDataList");
+    }
 
     fetchUserById(userId) {
         return axios.get(USER_API_BASE_URL + userId);

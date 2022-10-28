@@ -27,6 +27,14 @@ function DemoHome () {
     navigate('/createtest');
   }
 
+  const utility = () =>{
+    navigate('/utilityServices');
+  }
+
+  const downloadUtil = () =>{
+    navigate('/downloadUtil');
+  }
+
   return (
   <div>
     <h2>Home</h2>
@@ -36,6 +44,13 @@ function DemoHome () {
     </div>
     <div>If You New User Please reister
     <Button  onClick={() => sinup()} type='submit'>SIN UP</Button>
+    </div>
+    <div>Utility Services
+    <Button  onClick={() => utility()} type='submit'>SERVICES</Button>
+    </div>
+    <br/>
+    <div>Download Services
+    <Button  onClick={() => downloadUtil()} type='submit'>DOWNLOAD SERVICES</Button>
     </div>
   </div>
   );

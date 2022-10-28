@@ -11,12 +11,15 @@ import LoginPage from './components/LoginPage';
 import Login from './components/Login';
 import CreateTest from './components/CreateTest';
 import UpdateTest from './components/UpdateTest';
+import CallThirdPartiApi from './components/CallThirdPartiApi';
 import './index.css';
+import AddLab from './DropdownMaster';
 
 const rootElement = document.getElementById("root");
 
 function App(){
 
+  
 
    return (
     <div className="App">
@@ -27,6 +30,8 @@ function App(){
         <div className="App-header">
           <Routes>
           <Route path="/" element={<DemoHome/>}/>
+
+          <Route path="/downloadUtil" element={<AddLab/>}/>
 
           <Route path="/login" element={<LoginPage/>}/>
 
@@ -43,6 +48,8 @@ function App(){
           <Route path="/update" element={<Update/>}/>
 
           <Route path="/updatetest" element={<UpdateTest/>}/>
+
+          <Route path="/utilityServices" element={<CallThirdPartiApi/>}/>
 
                     
           </Routes>

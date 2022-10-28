@@ -15,7 +15,7 @@
 }
 
 .App-header {
-  background-color: tan;
+  background-color: silver;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@
   justify-content: top;
   align-items: center;
   height: 100vh;
-  color: gray;
+  color: skyblue;
   
 }
 .main-header{
@@ -72,11 +72,14 @@ textarea {
   height: 8rem;
 }
 button {
-  margin: 2rem 0;
-  width: 100%;
-  padding: 8px 0;
-  cursor: pointer;
+  
+  margin: 4rem 0;
+  width: 35%;
+  height: 50%;
+  
 }
+
+
 
 /* creating css loader */
 
